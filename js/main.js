@@ -1,5 +1,3 @@
-// const EMAIL_JS_KEY = import.meta.env.VITE_EMAIL_JS;
-
 // Mapping des icônes pour les compétences/technologies
 const skillIcons = {
   'Python': 'bxl-python',
