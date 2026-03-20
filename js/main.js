@@ -1,4 +1,4 @@
-const EMAIL_JS_KEY = import.meta.env.VITE_EMAIL_JS;
+// const EMAIL_JS_KEY = import.meta.env.VITE_EMAIL_JS;
 
 // Mapping des icônes pour les compétences/technologies
 const skillIcons = {
@@ -566,7 +566,7 @@ document.addEventListener("DOMContentLoaded", function() {
         
         // Vérifier si EmailJS est chargé
         if (typeof emailjs !== 'undefined') {
-          emailjs.send('service_rv3looo', 'template_kutkjkw', templateParams, EMAIL_JS_KEY)
+          emailjs.send('service_rv3looo', 'template_kutkjkw', templateParams, '1MunetjMpfBPxbHRg')
             .then(function(response) {
               console.log('SUCCESS!', response.status, response.text);
               formStatus.textContent = "Message envoyé avec succès!";
