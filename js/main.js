@@ -566,7 +566,7 @@ document.addEventListener("DOMContentLoaded", function() {
         
         // Vérifier si EmailJS est chargé
         if (typeof emailjs !== 'undefined') {
-          emailjs.send('service_rv3looo', 'template_kutkjkw', templateParams, ${EMAIL_JS_KEY})
+          emailjs.send('service_rv3looo', 'template_kutkjkw', templateParams, EMAIL_JS_KEY)
             .then(function(response) {
               console.log('SUCCESS!', response.status, response.text);
               formStatus.textContent = "Message envoyé avec succès!";
