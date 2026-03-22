@@ -1,37 +1,127 @@
-# Site Portfolio Statique
+# Portfolio Sofiane TAREB - SPA Vite
 
-Ce dossier contient la version statique du portfolio.
+Portfolio personnel en Single Page Application (SPA), construit avec Vite.
 
-## Démarrage local
+Le site conserve une navigation par URL:
+- /
+- /experiences
+- /education
+- /projects
+- /contact
 
-Pour tester le site localement, utilisez un serveur HTTP simple :
+Le rendu est alimenté dynamiquement par des fichiers JSON pour les sections principales.
+
+## Stack technique
+
+- Vite (build + dev server)
+- JavaScript ES Modules
+- Tailwind CSS (via CDN dans la page)
+- AOS (animations au scroll)
+- Boxicons
+- EmailJS pour le formulaire de contact
+- Netlify pour le déploiement
+
+## Fonctionnalités
+
+- Architecture SPA avec un seul fichier HTML
+- Navigation interne sans rechargement de page
+- Données dynamiques chargées depuis public/data
+- Modales de détail pour formations, expériences et projets
+- Thème clair/sombre avec persistance
+- Formulaire de contact connecté à EmailJS
+
+## Structure du projet
+
+- index.html: shell de la SPA et toutes les vues
+- src/main.js: routing, chargement des données, interactions UI, formulaire
+- public/css/style.css: styles personnalisés
+- public/data: contenus JSON
+- public/images: images
+- public/files: fichiers téléchargeables
+- netlify.toml: build + redirects Netlify
+
+## Installation locale
+
+1. Installer les dépendances:
 
 ```bash
-# Avec Python 3
-python -m http.server 8000
-
-# Avec Node.js (si http-server est installé)
-npx http-server
-
-# Avec PHP
-php -S localhost:8000
+npm install
 ```
 
-Puis ouvrez votre navigateur à l'adresse : http://localhost:8000
+2. Configurer les variables d'environnement dans .env:
 
-## Déploiement
+```env
+VITE_EMAIL_JS=your_emailjs_public_key
+```
 
-Ce site peut être déployé sur n'importe quelle plateforme d'hébergement statique :
-- GitHub Pages
-- Netlify
-- Vercel
-- AWS S3
-- etc.
+3. Lancer le serveur local:
 
-## Configuration du formulaire de contact
+```bash
+npm run dev
+```
 
-Le formulaire de contact utilise EmailJS. Pour le configurer :
-1. Créez un compte sur https://www.emailjs.com/
-2. Configurez un service email
-3. Créez un template d'email
-4. Modifiez les IDs dans `js/main.js` (lignes avec emailjs.send)
+4. Ouvrir l'URL affichée par Vite (par défaut http://localhost:5173).
+
+## Scripts npm
+
+```bash
+npm run dev      # développement
+npm run build    # build production (dossier dist)
+npm run preview  # prévisualisation du build
+```
+
+## Variables d'environnement
+
+Le projet utilise:
+
+- VITE_EMAIL_JS: clé publique EmailJS (public key)
+
+Important:
+- Les variables Vite doivent commencer par VITE_.
+- Ne jamais stocker de clé privée dans le front.
+
+## Déploiement Netlify
+
+Le fichier netlify.toml est déjà configuré:
+
+- commande de build: npm run build
+- dossier publié: dist
+- redirection SPA: /* -> /index.html (status 200)
+
+Étapes:
+
+1. Connecter le repo à Netlify.
+2. Ajouter la variable d'environnement VITE_EMAIL_JS dans Site settings > Environment variables.
+3. Lancer le deploy.
+
+## Personnaliser le contenu
+
+Modifier les fichiers dans public/data:
+
+- education.json
+- experiences.json
+- projects.json
+- skills.json
+
+Les images et documents associés doivent être placés dans:
+
+- public/images
+- public/files
+
+Utiliser des chemins relatifs depuis public, par exemple:
+
+- images/mon-image.jpg
+- files/mon-cv.pdf
+
+## Dépannage rapide
+
+- Le formulaire n'envoie rien:
+	- vérifier VITE_EMAIL_JS dans .env (local) ou Netlify.
+- Une route affiche 404 en production:
+	- vérifier que netlify.toml contient bien la redirection SPA.
+- Un visuel ne s'affiche pas:
+	- vérifier le chemin dans les JSON et la présence du fichier dans public.
+
+## Licence
+
+Usage personnel et portfolio.

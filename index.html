@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sofiane TAREB | Portfolio</title>
-  <!-- Tailwind CSS et plugins -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -22,70 +21,62 @@
               600: '#4f46e5',
               700: '#4338ca',
               800: '#3730a3',
-              900: '#312e81',
+              900: '#312e81'
             }
           },
           fontFamily: {
             sans: ['Inter', 'sans-serif'],
-            mono: ['Fira Code', 'monospace'],
+            mono: ['Fira Code', 'monospace']
           },
           animation: {
             'fade-in': 'fadeIn 0.5s ease-in-out',
             'slide-up': 'slideUp 0.5s ease-in-out',
-            'pulse-slow': 'pulse 3s infinite',
+            'pulse-slow': 'pulse 3s infinite'
           },
           keyframes: {
             fadeIn: {
               '0%': { opacity: '0' },
-              '100%': { opacity: '1' },
+              '100%': { opacity: '1' }
             },
             slideUp: {
               '0%': { transform: 'translateY(20px)', opacity: '0' },
-              '100%': { transform: 'translateY(0)', opacity: '1' },
+              '100%': { transform: 'translateY(0)', opacity: '1' }
             }
           }
         }
       }
-    }
+    };
   </script>
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
-  <!-- Animation On Scroll -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <!-- Boxicons -->
-  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="./css/style.css">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-200 min-h-screen flex flex-col transition-colors duration-300">
-  <!-- Preloader -->
   <div id="preloader" class="fixed inset-0 z-50 flex items-center justify-center bg-white dark:bg-gray-900 transition-opacity duration-500">
-    <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-primary-600 border-solid"></div>
+    <div class="preloader-spinner"></div>
   </div>
 
-  <!-- Navbar -->
   <nav class="bg-white dark:bg-gray-800 shadow-lg fixed w-full z-10 transition-colors duration-300">
     <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-      <a href="./index.html" class="text-2xl font-bold flex items-center">
+      <a href="/" data-route-link class="text-2xl font-bold flex items-center">
         <span class="text-primary-600 dark:text-primary-400">Sofiane's Portfolio</span>
       </a>
 
-      <!-- Desktop Links -->
-      <div class="hidden md:flex space-x-6">
-        <a href="./index.html" class="nav-link hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Accueil</a>
-        <a href="./experiences.html" class="nav-link hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Expériences</a>
-        <a href="./education.html" class="nav-link hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Éducation</a>
-        <a href="./projects.html" class="nav-link hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Projets</a>
-        <a href="./contact.html" class="nav-link hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Contact</a>
+      <div class="hidden md:flex space-x-6 items-center">
+        <a href="/" data-route-link class="nav-link hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Accueil</a>
+        <a href="/experiences" data-route-link class="nav-link hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Experiences</a>
+        <a href="/education" data-route-link class="nav-link hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Education</a>
+        <a href="/projects" data-route-link class="nav-link hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Projets</a>
+        <a href="/contact" data-route-link class="nav-link hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Contact</a>
         <button id="theme-toggle" class="p-1 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none transition-colors">
           <i class="bx bx-sun text-xl dark:hidden"></i>
           <i class="bx bx-moon text-xl hidden dark:block"></i>
         </button>
       </div>
 
-      <!-- Mobile Hamburger -->
       <div class="md:hidden flex items-center space-x-4">
         <button id="theme-toggle-mobile" class="p-1 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none transition-colors">
           <i class="bx bx-sun text-xl dark:hidden"></i>
@@ -97,12 +88,9 @@
       </div>
     </div>
 
-    <!-- Semi‑transparent backdrop -->
     <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-20 backdrop-blur-sm"></div>
 
-    <!-- Sliding menu panel -->
-    <div id="mobile-menu"
-         class="fixed top-0 right-0 h-full w-3/4 max-w-xs bg-white dark:bg-gray-800 shadow-2xl perspective transform-gpu translate-x-full transition-transform duration-500 ease-out z-30">
+    <div id="mobile-menu" class="fixed top-0 right-0 h-full w-3/4 max-w-xs bg-white dark:bg-gray-800 shadow-2xl perspective transform-gpu translate-x-full transition-transform duration-500 ease-out z-30">
       <div class="p-6 grid gap-4">
         <div class="flex justify-between items-center mb-6">
           <span class="text-xl font-bold">Menu</span>
@@ -110,401 +98,351 @@
             <i class="bx bx-x"></i>
           </button>
         </div>
-        <a href="./index.html" class="mobile-nav-link py-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Accueil</a>
-        <a href="./experiences.html" class="mobile-nav-link py-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Expériences</a>
-        <a href="./education.html" class="mobile-nav-link py-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Éducation</a>
-        <a href="./projects.html" class="mobile-nav-link py-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Projets</a>
-        <a href="./contact.html" class="mobile-nav-link py-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Contact</a>
+        <a href="/" data-route-link class="mobile-nav-link py-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Accueil</a>
+        <a href="/experiences" data-route-link class="mobile-nav-link py-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Experiences</a>
+        <a href="/education" data-route-link class="mobile-nav-link py-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Education</a>
+        <a href="/projects" data-route-link class="mobile-nav-link py-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Projets</a>
+        <a href="/contact" data-route-link class="mobile-nav-link py-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Contact</a>
       </div>
     </div>
   </nav>
 
-  <!-- Flashes -->
-  <div class="pt-20 max-w-4xl mx-auto px-4">
-    
-      
-    
-  </div>
-
-  <!-- Back to top button -->
   <button id="back-to-top" class="fixed bottom-6 right-6 p-3 rounded-full bg-primary-600 text-white shadow-lg z-[9999] opacity-0 invisible transition-all duration-300 hover:bg-primary-700">
     <i class="bx bx-up-arrow-alt text-xl"></i>
   </button>
 
-  <!-- Contenu principal avec structure flex -->
-  <div class="flex flex-col">
-    <!-- Main content -->
-    <main class="flex-grow">
-      
-<!-- Hero Section -->
-<section class="bg-gradient-to-b from-gray-300 to-white dark:from-gray-900 dark:to-gray-800 py-8 transition-colors duration-300">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex flex-col md:flex-row items-center justify-between">
-      <div class="md:w-1/2 mb-16" data-aos="fade-right" data-aos-delay="100">
-        <h1 class="text-4xl md:text-5xl text-center font-extrabold mb-4">
-          Bonjour, je suis Sofiane
-        </h1>
-        <p class="text-xl md:text-2xl text-gray-700 dark:text-gray-300 text-center">
-          Data Scientist / AI Engineer
-        </p>
-        <p class="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-8 text-center">
-          passionné
-        </p>
-        <div class="flex flex-wrap gap-4 justify-center">
-          <a href="./projects.html" class="px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white rounded-xl transition-colors duration-300 shadow-lg hover:shadow-xl flex items-center">
-            <i class="bx bx-code-alt mr-2"></i> Voir mes projets
-          </a>
-          <a href="./contact.html" class="px-6 py-3 bg-white dark:bg-gray-800 border border-primary-600 dark:border-primary-400 text-primary-600 dark:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-xl transition-colors duration-300 shadow-lg hover:shadow-xl flex items-center">
-            <i class="bx bx-envelope mr-2"></i> Me contacter
-          </a>
-        </div>
-      </div>
-      <div class="md:w-1/2 flex justify-center  mb-16" data-aos="fade-left" data-aos-delay="300">
-        <div class="w-64 h-64 sm:w-80 sm:h-80 relative">
-          <!-- Image de profil ou illustration -->
-          <div class="absolute inset-0 bg-primary-500 rounded-full opacity-20 animate-pulse-slow"></div>
-          <img src="./images/profile.jpeg" alt="Sofiane TAREB" class="rounded-full w-full h-full object-cover z-10 relative border-4 border-white dark:border-gray-800 shadow-xl">
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- À propos Section -->
-<section class="py-10 md:pt-20 pt-52 bg-white dark:bg-gray-800 transition-colors duration-300">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex flex-col lg:flex-row gap-12">
-      <div class="lg:w-1/2 text-center" data-aos="fade-up">
-        <h2 class="text-3xl md:text-4xl font-bold mb-6 flex justify-center">
-          À propos de moi
-        </h2>
-        <p class="text-lg text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
-          Je suis animé par la curiosité et la passion de transformer des défis complexes en solutions simplement utiles. 
-          Indépendant tout en aimant collaborer, je veille à allier rigueur et sens du concret pour que chaque projet 
-          ait un impact tangible. Hors du monde numérique, je trouve mon inspiration dans la photographie, 
-          les voyages et les randonnées, sources permanentes de créativité et d'analyse fine. Quadrilingue et ouvert à 
-          la diversité des cultures, j'apporte un regard adaptable et enthousiaste à toute nouvelle aventure.
-        </p>       
-        <div class="flex flex-wrap gap-2  justify-center">
-          <span class="px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded-full text-sm font-medium">Français</span>
-          <span class="px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded-full text-sm font-medium">Anglais</span>
-          <span class="px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded-full text-sm font-medium">Arabe</span>
-          <span class="px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded-full text-sm font-medium">Kabyle</span>
-        </div>
-      </div>
-      
-      <div class="lg:w-1/2 items-center text-center" data-aos="fade-up">
-        <h2 class="text-3xl md:text-4xl font-bold mb-6 flex justify-center">
-          Mes compétences
-        </h2>
-        
-        <!-- Conteneur avec défilement automatique vertical -->
-        <div class="skills-container py-3">
-          <div class="skills-scroll-wrapper">
-            <!-- Premier groupe d'icônes -->
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
-              
-              <div class="skill-icon-container">
-                <div class="skill-icon-wrapper">
-                  <div class="skill-icon">
-                    <i class="bx bxl-python text-4xl"></i>
-                  </div>
-                  <div class="skill-name mt-3 text-center">
-                    <span class="font-medium">Python</span>
-                  </div>
+  <div class="flex flex-col w-full">
+    <main class="flex-grow pt-20">
+      <section id="view-home" class="page-view">
+        <section class="bg-gradient-to-b from-gray-300 to-white dark:from-gray-900 dark:to-gray-800 py-8 transition-colors duration-300">
+          <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+              <div class="md:w-1/2 mb-16" data-aos="fade-right" data-aos-delay="100">
+                <h1 id="hero-title" class="text-4xl md:text-5xl text-center font-extrabold mb-4">Bonjour, je suis Sofiane</h1>
+                <p class="text-xl md:text-2xl text-gray-700 dark:text-gray-300 text-center">Data Scientist / AI Engineer</p>
+                <p class="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-8 text-center">passionné</p>
+                <div class="flex flex-wrap gap-4 justify-center">
+                  <a href="/projects" data-route-link class="px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white rounded-xl transition-colors duration-300 shadow-lg hover:shadow-xl flex items-center">
+                    <i class="bx bx-code-alt mr-2"></i> Voir mes projets
+                  </a>
+                  <a href="/contact" data-route-link class="px-6 py-3 bg-white dark:bg-gray-800 border border-primary-600 dark:border-primary-400 text-primary-600 dark:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-xl transition-colors duration-300 shadow-lg hover:shadow-xl flex items-center">
+                    <i class="bx bx-envelope mr-2"></i> Me contacter
+                  </a>
                 </div>
               </div>
-              
-              <div class="skill-icon-container">
-                <div class="skill-icon-wrapper">
-                  <div class="skill-icon">
-                    <i class="bx bx-data text-4xl"></i>
-                  </div>
-                  <div class="skill-name mt-3 text-center">
-                    <span class="font-medium">SQL</span>
-                  </div>
+              <div class="md:w-1/2 flex justify-center mb-16" data-aos="fade-left" data-aos-delay="300">
+                <div class="w-64 h-64 sm:w-80 sm:h-80 relative">
+                  <div class="absolute inset-0 bg-primary-500 rounded-full opacity-20 animate-pulse-slow"></div>
+                  <img id="profile-image" src="/images/profile.jpeg" alt="Sofiane TAREB" class="floating rounded-full w-full h-full object-cover z-10 relative border-4 border-white dark:border-gray-800 shadow-xl">
                 </div>
               </div>
-              
-              <div class="skill-icon-container">
-                <div class="skill-icon-wrapper">
-                  <div class="skill-icon">
-                    <i class="bx bx-analyse text-4xl"></i>
-                  </div>
-                  <div class="skill-name mt-3 text-center">
-                    <span class="font-medium">R</span>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="skill-icon-container">
-                <div class="skill-icon-wrapper">
-                  <div class="skill-icon">
-                    <i class="bx bx-brain text-4xl"></i>
-                  </div>
-                  <div class="skill-name mt-3 text-center">
-                    <span class="font-medium">Machine Learning</span>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="skill-icon-container">
-                <div class="skill-icon-wrapper">
-                  <div class="skill-icon">
-                    <i class="bx bx-brain text-4xl"></i>
-                  </div>
-                  <div class="skill-name mt-3 text-center">
-                    <span class="font-medium">Deep Learning</span>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="skill-icon-container">
-                <div class="skill-icon-wrapper">
-                  <div class="skill-icon">
-                    <i class="bx bxl-google-cloud text-4xl"></i>
-                  </div>
-                  <div class="skill-name mt-3 text-center">
-                    <span class="font-medium">GCP</span>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="skill-icon-container">
-                <div class="skill-icon-wrapper">
-                  <div class="skill-icon">
-                    <i class="bx bx-server text-4xl"></i>
-                  </div>
-                  <div class="skill-name mt-3 text-center">
-                    <span class="font-medium">Big Data</span>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="skill-icon-container">
-                <div class="skill-icon-wrapper">
-                  <div class="skill-icon">
-                    <i class="bx bxl-gitlab text-4xl"></i>
-                  </div>
-                  <div class="skill-name mt-3 text-center">
-                    <span class="font-medium">GitLab</span>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="skill-icon-container">
-                <div class="skill-icon-wrapper">
-                  <div class="skill-icon">
-                    <i class="bx bxl-github text-4xl"></i>
-                  </div>
-                  <div class="skill-name mt-3 text-center">
-                    <span class="font-medium">GitHub</span>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="skill-icon-container">
-                <div class="skill-icon-wrapper">
-                  <div class="skill-icon">
-                    <i class="bx bx-chat text-4xl"></i>
-                  </div>
-                  <div class="skill-name mt-3 text-center">
-                    <span class="font-medium">NLP</span>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="skill-icon-container">
-                <div class="skill-icon-wrapper">
-                  <div class="skill-icon">
-                    <i class="bx bxl-flask text-4xl"></i>
-                  </div>
-                  <div class="skill-name mt-3 text-center">
-                    <span class="font-medium">Flask</span>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="skill-icon-container">
-                <div class="skill-icon-wrapper">
-                  <div class="skill-icon">
-                    <i class="bx bxl-docker text-4xl"></i>
-                  </div>
-                  <div class="skill-name mt-3 text-center">
-                    <span class="font-medium">Docker</span>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="skill-icon-container">
-                <div class="skill-icon-wrapper">
-                  <div class="skill-icon">
-                    <i class="bx bx-cloud text-4xl"></i>
-                  </div>
-                  <div class="skill-name mt-3 text-center">
-                    <span class="font-medium">Hadoop</span>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="skill-icon-container">
-                <div class="skill-icon-wrapper">
-                  <div class="skill-icon">
-                    <i class="bx bx-bolt-circle text-4xl"></i>
-                  </div>
-                  <div class="skill-name mt-3 text-center">
-                    <span class="font-medium">PySpark</span>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="skill-icon-container">
-                <div class="skill-icon-wrapper">
-                  <div class="skill-icon">
-                    <i class="bx bx-file text-4xl"></i>
-                  </div>
-                  <div class="skill-name mt-3 text-center">
-                    <span class="font-medium">Excel</span>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="skill-icon-container">
-                <div class="skill-icon-wrapper">
-                  <div class="skill-icon">
-                    <i class="bx bx-bar-chart-square text-4xl"></i>
-                  </div>
-                  <div class="skill-name mt-3 text-center">
-                    <span class="font-medium">Power BI</span>
-                  </div>
-                </div>
-              </div>
-              
             </div>
           </div>
+        </section>
+
+        <section class="bg-white dark:bg-gray-800 transition-colors duration-300">
+          <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row gap-12">
+              <div class="lg:w-1/2 text-center" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6 flex justify-center">À propos de moi</h2>
+                <p class="text-lg text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
+                  Je suis animé par la curiosité et la passion de transformer des défis complexes en solutions simplement utiles. 
+                  Indépendant tout en aimant collaborer, je veille à allier rigueur et sens du concret pour que chaque projet 
+                  ait un impact tangible. Hors du monde numérique, je trouve mon inspiration dans la photographie, 
+                  les voyages et les randonnées, sources permanentes de créativité et d'analyse fine. Quadrilingue et ouvert à 
+                  la diversité des cultures, j'apporte un regard adaptable et enthousiaste à toute nouvelle aventure.
+                </p>
+                <div class="flex flex-wrap gap-2 justify-center">
+                  <span class="px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded-full text-sm font-medium">Français</span>
+                  <span class="px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded-full text-sm font-medium">Anglais</span>
+                  <span class="px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded-full text-sm font-medium">Arabe</span>
+                  <span class="px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded-full text-sm font-medium">Kabyle</span>
+                </div>
+              </div>
+
+              <div class="lg:w-1/2 items-center text-center" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6 flex justify-center">Mes compétences</h2>
+                <div class="skills-container py-3">
+                  <div class="skills-scroll-wrapper">
+                    <div id="skills-grid-primary" class="grid grid-cols-2 md:grid-cols-3 gap-6">
+                      <div class="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden h-32 skeleton"></div>
+                      <div class="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden h-32 skeleton"></div>
+                      <div class="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden h-32 skeleton"></div>
+                    </div>
+                    <div id="skills-grid-duplicate" class="grid grid-cols-2 md:grid-cols-3 gap-6"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="md:py-6 mb:pt-0 pt-6 bg-white dark:bg-gray-800 transition-colors duration-300">
+          <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12" data-aos="fade-up">
+              <h2 class="text-3xl md:text-4xl font-bold mb-4">Ce que je fais</h2>
+              <p class="text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
+                Voici les domaines dans lesquels j'excelle et les services que je peux vous offrir
+              </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300" data-aos="zoom-in" data-aos-delay="300">
+                <div class="text-primary-600 dark:text-primary-400 mb-4"><i class="bx bx-data text-4xl"></i></div>
+                <h3 class="text-xl font-semibold mb-3">Analyse de Donnees</h3>
+                <p class="text-gray-700 dark:text-gray-300">Traitement et analyse de données pour en extraire des insights pertinents.</p>
+              </div>
+
+              <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300" data-aos="zoom-in" data-aos-delay="200">
+                <div class="text-primary-600 dark:text-primary-400 mb-4"><i class="bx bx-brain text-4xl"></i></div>
+                <h3 class="text-xl font-semibold mb-3">Data Science et IA</h3>
+                <p class="text-gray-700 dark:text-gray-300">Développement de modèles de machine learning et de systèmes d'IA pour résoudre des problèmes complexes.</p>
+              </div>
+
+              <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300" data-aos="zoom-in" data-aos-delay="100">
+                <div class="text-primary-600 dark:text-primary-400 mb-4"><i class="bx bx-network-chart text-4xl"></i></div>
+                <h3 class="text-xl font-semibold mb-3">IAG et RAG</h3>
+                <p class="text-gray-700 dark:text-gray-300">Développement d'applications et de systèmes basés sur l'IA Générative et la Génération Augmentée.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="py-16 bg-white dark:bg-gray-800 transition-colors duration-300">
+          <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-aos="fade-up">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Prêt à travailler ensemble ?</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">N'hésitez pas à me contacter pour discuter de votre projet ou pour toute question.</p>
+            <a href="/contact" data-route-link class="px-8 py-4 bg-white dark:bg-gray-800 border border-primary-600 dark:border-primary-400 text-primary-600 dark:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-xl transition-colors duration-300 shadow-lg hover:shadow-xl">Me contacter</a>
+          </div>
+        </section>
+      </section>
+
+      <section id="view-experiences" class="page-view hidden">
+        <section class="bg-gradient-to-b from-gray-300 to-white dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
+          <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="text-center" data-aos="fade-up">
+              <h2 class="text-3xl md:text-4xl font-bold mb-4">Mes Expériences</h2>
+              <p class="text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">Parcours professionnel et expériences significatives</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="py-8 bg-white dark:bg-gray-800 transition-colors duration-300" data-aos="fade-in" data-aos-delay="200">
+          <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div id="experiences-container" class="grid md:grid-cols-2 gap-8">
+              <div class="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden h-96 skeleton"></div>
+              <div class="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden h-96 skeleton"></div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <section id="view-education" class="page-view hidden">
+        <section class="bg-gradient-to-b from-gray-300 to-white dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
+          <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="text-center" data-aos="fade-up">
+              <h2 class="text-3xl md:text-4xl font-bold mb-4">Mes Formations</h2>
+              <p class="text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">Parcours académique et formations complémentaires</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="py-8 bg-white dark:bg-gray-800 transition-colors duration-300" data-aos="fade-in" data-aos-delay="200">
+          <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div id="education-container" class="grid md:grid-cols-2 gap-8">
+              <div class="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden h-96 skeleton"></div>
+              <div class="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden h-96 skeleton"></div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <section id="view-projects" class="page-view hidden">
+        <section class="bg-gradient-to-b from-gray-300 to-white dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
+          <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="text-center" data-aos="fade-up">
+              <h2 class="text-3xl md:text-4xl font-bold mb-4">Mes Projets</h2>
+              <p class="text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">Découvrez les projets sur lesquels j'ai travaillé et les technologies utilisées</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="py-8 bg-white dark:bg-gray-800 transition-colors duration-300" data-aos="fade-in" data-aos-delay="200">
+          <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div id="projects-container" class="grid md:grid-cols-2 gap-8">
+              <div class="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden h-96 skeleton"></div>
+              <div class="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden h-96 skeleton"></div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <section id="view-contact" class="page-view hidden">
+        <section class="bg-gradient-to-b from-gray-300 to-white dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
+          <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="text-center" data-aos="fade-up">
+              <h2 class="text-3xl md:text-4xl font-bold mb-4">Prêt à travailler ensemble ?</h2>
+              <p class="text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
+                N'hésitez pas à me contacter pour discuter de votre projet ou pour toute question.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="py-8 bg-white dark:bg-gray-800 transition-colors duration-300" data-aos="fade-in" data-aos-delay="200">
+          <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row gap-12" data-aos="fade-in" data-aos-delay="200">
+              <div class="md:w-7/12">
+                <div class="bg-gradient-to-br from-gray-200 to-gray-50 dark:from-gray-800 dark:to-gray-700 py-8 transition-colors duration-300 rounded-2xl shadow-xl p-8">
+                  <h2 class="text-3xl md:text-4xl font-bold mb-6">Contactez-moi</h2>
+                  <p class="text-gray-600 dark:text-gray-400 mb-8">Vous avez un projet en tête, une question ou une proposition ? N'hésitez pas à m'envoyer un message !</p>
+
+                  <form id="contact-form" class="space-y-6" novalidate>
+                    <div class="grid md:grid-cols-2 gap-6">
+                      <div>
+                        <label for="name" class="block text-sm font-medium mb-2">Nom</label>
+                        <div class="relative">
+                          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><i class="bx bx-user text-gray-500"></i></div>
+                          <input id="name" name="name" type="text" required class="block w-full pl-10 pr-3 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-white dark:bg-gray-700 transition-colors duration-300">
+                          <div class="error-message hidden mt-1 text-sm text-red-600 dark:text-red-400"></div>
+                        </div>
+                      </div>
+                      <div>
+                        <label for="email" class="block text-sm font-medium mb-2">Email</label>
+                        <div class="relative">
+                          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><i class="bx bx-envelope text-gray-500"></i></div>
+                          <input id="email" name="email" type="email" required class="block w-full pl-10 pr-3 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-white dark:bg-gray-700 transition-colors duration-300">
+                          <div class="error-message hidden mt-1 text-sm text-red-600 dark:text-red-400"></div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <label for="subject" class="block text-sm font-medium mb-2">Sujet</label>
+                      <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><i class="bx bx-chat text-gray-500"></i></div>
+                        <input id="subject" name="subject" type="text" required class="block w-full pl-10 pr-3 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-white dark:bg-gray-700 transition-colors duration-300">
+                        <div class="error-message hidden mt-1 text-sm text-red-600 dark:text-red-400"></div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <label for="message" class="block text-sm font-medium mb-2">Message</label>
+                      <div class="relative">
+                        <div class="absolute top-3 left-3 flex items-start pointer-events-none"><i class="bx bx-pencil text-gray-500"></i></div>
+                        <textarea id="message" name="message" rows="5" required class="block w-full pl-10 pr-3 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-white dark:bg-gray-700 transition-colors duration-300"></textarea>
+                        <div class="error-message hidden mt-1 text-sm text-red-600 dark:text-red-400"></div>
+                      </div>
+                    </div>
+
+                    <div class="flex items-center justify-between pt-2">
+                      <div id="form-status" class="text-sm"></div>
+                      <button type="submit" id="submit-btn" class="px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg shadow-md hover:shadow-lg transition-all duration-300 flex items-center">
+                        <span>Envoyer le message</span>
+                        <i class="bx bx-send ml-2"></i>
+                        <div id="spinner" class="hidden ml-2 w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+              <div class="md:w-5/12">
+                <div class="bg-gradient-to-bl from-gray-200 to-gray-50 dark:from-gray-800 dark:to-gray-700 py-8 transition-colors duration-300 rounded-2xl shadow-xl p-8 h-full">
+                  <h3 class="text-2xl font-bold mb-6">Informations</h3>
+                  <div class="space-y-6">
+                    <div class="flex items-start">
+                      <div class="flex-shrink-0 bg-primary-100 dark:bg-primary-900 p-3 rounded-lg"><i class="bx bx-envelope text-primary-600 dark:text-primary-400 text-xl"></i></div>
+                      <div class="ml-4">
+                        <h4 class="text-lg font-medium">Email</h4>
+                        <p class="text-gray-600 dark:text-gray-400">sofianetareb.pro@gmail.com</p>
+                      </div>
+                    </div>
+                    <div class="flex items-start">
+                      <div class="flex-shrink-0 bg-primary-100 dark:bg-primary-900 p-3 rounded-lg"><i class="bx bx-map text-primary-600 dark:text-primary-400 text-xl"></i></div>
+                      <div class="ml-4">
+                        <h4 class="text-lg font-medium">Localisation</h4>
+                        <p class="text-gray-600 dark:text-gray-400">Rennes, France</p>
+                      </div>
+                    </div>
+                    <div class="flex items-start">
+                      <div class="flex-shrink-0 bg-primary-100 dark:bg-primary-900 p-3 rounded-lg"><i class="bx bx-link text-primary-600 dark:text-primary-400 text-xl"></i></div>
+                      <div class="ml-4">
+                        <h4 class="text-lg font-medium">Réseaux sociaux</h4>
+                        <div class="flex space-x-3 mt-2">
+                          <a href="https://github.com/TAREBSofiane" target="_blank" class="text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400"><i class="bx bxl-github text-2xl"></i></a>
+                          <a href="https://linkedin.com/in/sofianetareb" target="_blank" class="text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400"><i class="bx bxl-linkedin text-2xl"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mt-8 bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg h-48 relative">
+                    <img src="/images/map.jpeg" alt="Localisation" class="w-full h-48 object-cover transform transition-transform duration-500 hover:scale-110">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <div id="detail-modal" class="modal" onclick="if(event.target === this) closeModal()">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 id="modal-title" class="text-2xl font-bold text-gray-900 dark:text-white"></h2>
+            <button onclick="closeModal()" class="close-modal"><i class="bx bx-x"></i></button>
+          </div>
+          <div id="modal-body" class="modal-body"></div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- Services/Ce que je fais Section -->
-<section class="md:py-6 mb:pt-0 pt-6 bg-white dark:bg-gray-800 transition-colors duration-300">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-12" data-aos="fade-up">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4">Ce que je fais</h2>
-      <p class="text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
-        Voici les domaines dans lesquels j'excelle et les services que je peux vous offrir
-      </p>
-    </div>
-    
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- Service 1 -->
-      <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300" data-aos="zoom-in" data-aos-delay="300">
-        <div class="text-primary-600 dark:text-primary-400 mb-4">
-          <i class="bx bx-data text-4xl"></i>
-        </div>
-        <h3 class="text-xl font-semibold mb-3">Analyse de Données</h3>
-        <p class="text-gray-700 dark:text-gray-300">
-          Traitement et analyse de données pour en extraire des insights pertinents.
-        </p>
-      </div>
-
-      <!-- Service 2 -->
-      <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300" data-aos="zoom-in" data-aos-delay="200">
-        <div class="text-primary-600 dark:text-primary-400 mb-4">
-          <i class="bx bx-brain text-4xl"></i>
-        </div>
-        <h3 class="text-xl font-semibold mb-3">Intelligence Artificielle</h3>
-        <p class="text-gray-700 dark:text-gray-300">
-          Conception et développement de solutions IA pour des problèmes complexes.
-        </p>
-      </div>
-
-      <!-- Service 3 -->
-      <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300" data-aos="zoom-in" data-aos-delay="100">
-        <div class="text-primary-600 dark:text-primary-400 mb-4">
-          <i class="bx bx-network-chart text-4xl"></i>
-        </div>
-        <h3 class="text-xl font-semibold mb-3">IAG et RAG</h3>
-        <p class="text-gray-700 dark:text-gray-300">
-          Développement d'applications et de systèmes basés sur l'Intelligence Artificielle Générative et la Récupération Augmentée.
-        </p>
-      </div>
-      
-    </div>
-  </div>
-</section>
-
-<!-- CTA Section -->
-<section class="py-16 bg-white dark:bg-gray-800 transition-colors duration-300">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-aos="fade-up">
-    <h2 class="text-3xl md:text-4xl font-bold mb-6">Prêt à travailler ensemble ?</h2>
-    <p class="text-xl mb-8 max-w-2xl mx-auto">
-      N'hésitez pas à me contacter pour discuter de votre projet ou pour toute question.
-    </p>
-    <a href="./contact.html" class="px-8 py-4 bg-white dark:bg-gray-800 border border-primary-600 dark:border-primary-400 text-primary-600 dark:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-xl transition-colors duration-300 shadow-lg hover:shadow-xl">
-      Me contacter
-    </a>
-  </div>
-</section>
-
     </main>
-    
-    <!-- Footer -->
-    <footer class="py-7 px-6 bg-gradient-to-b from-gray-300 to-gray-50 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300"  data-aos="fade-up">
+
+    <footer class="py-7 px-6 bg-gradient-to-b from-gray-300 to-gray-50 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300" data-aos="fade-up">
       <div class="max-w-7xl mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-3 items-center gap-4">
-          <!-- Colonne 1 : votre nom -->
           <div class="flex flex-col items-center md:items-start">
             <p class="text-lg font-semibold">Sofiane TAREB</p>
             <p class="text-gray-600 dark:text-gray-400">Data Scientist / AI Engineer</p>
           </div>
 
-          <!-- Colonne 2 : le bouton centré -->
           <div class="flex justify-center">
-            <a href="./files/CV_Sofiane_TAREB.pdf" target="_blank" 
-              class="px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 inline-flex items-center">
+            <a href="/files/CV_Sofiane_TAREB.pdf" target="_blank" data-footer="cv" class="px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 inline-flex items-center hidden">
               <i class="bx bx-download mr-2"></i>
               Télécharger mon CV
             </a>
+            <a href="/contact" data-route-link data-footer="contact" class="inline-block px-6 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors hidden">
+              Me Contacter
+            </a>
           </div>
 
-          <!-- Colonne 3 : vos icônes alignées à droite -->
           <div class="flex justify-center md:justify-end space-x-4">
-            <a href="https://github.com/TAREBSofiane" target="_blank" class="text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors">
-              <i class="bx bxl-github text-2xl"></i>
-            </a>
-            <a href="https://linkedin.com/in/sofianetareb" target="_blank" class="text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors">
-              <i class="bx bxl-linkedin text-2xl"></i>
-            </a>
-            <a href="mailto:sofianetareb.pro@gmail.com" class="text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors">
-              <i class="bx bx-envelope text-2xl"></i>
-            </a>
+            <a href="https://linkedin.com/in/sofiane-tareb" target="_blank" class="text-2xl hover:text-primary-600 dark:hover:text-primary-400 transition-colors"><i class="bx bxl-linkedin"></i></a>
+            <a href="https://github.com/TAREBSofiane" target="_blank" class="text-2xl hover:text-primary-600 dark:hover:text-primary-400 transition-colors"><i class="bx bxl-github"></i></a>
+            <a href="mailto:tarebsofiane18@gmail.com" class="text-2xl hover:text-primary-600 dark:hover:text-primary-400 transition-colors"><i class="bx bx-envelope"></i></a>
           </div>
         </div>
 
-        <div class="mt-6 text-center text-gray-600 dark:text-gray-400">
-          &copy; 2025 Sofiane TAREB. Tous droits réservés.
-        </div>
+        <div class="mt-6 text-center text-gray-600 dark:text-gray-400">&copy; 2025 Sofiane TAREB. Tous droits réservés.</div>
       </div>
     </footer>
   </div>
 
-  <!-- Scripts -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    // Initialize AOS with custom settings
-    AOS.init({
-      duration: 800,
-      easing: 'ease-in-out',
-      once: true,
-      mirror: false,
-    });
-  </script>
-  <!-- EmailJS pour le formulaire de contact (site statique) -->
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="./js/main.js"></script>
+  <script type="module" src="/src/main.js"></script>
+
+  <script>
+    (function () {
+      const savedMode = localStorage.getItem('darkMode');
+      if (
+        savedMode === 'true' ||
+        (savedMode !== 'false' && window.matchMedia('(prefers-color-scheme: dark)').matches)
+      ) {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
+  
 </body>
 </html>
