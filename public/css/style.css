@@ -14,23 +14,19 @@ body {
     font-family: 'Inter', sans-serif;
   }
   
-  /* Animations de transition de pages */
-  main {
-    animation: fadeIn 0.5s ease-in-out;
-  }
-  html.dark,
-  html.dark body {
+html.dark,
+html.dark body {
     background: #111827;
   }
-
+  
   #preloader {
     background: #f9fafb;
   }
-
+  
   html.dark #preloader {
     background: #111827;
   }
-
+  
   .preloader-spinner {
     width: 64px;
     height: 64px;
@@ -39,13 +35,17 @@ body {
     border-radius: 9999px;
     animation: preloader-spin 0.8s linear infinite;
   }
-
+  
   @keyframes preloader-spin {
     to {
       transform: rotate(360deg);
     }
   }
-
+  
+  /* Animations de transition de pages */
+  main {
+    animation: fadeIn 0.5s ease-in-out;
+  }
   
   /* Scrollbar personnalisée */
   ::-webkit-scrollbar {
